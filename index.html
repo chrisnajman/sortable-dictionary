@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <title>Dictonary</title>
+    <link rel="stylesheet" href="dictionary.css">
+    <script src="dictionary.js" defer></script>
+</head>
+
+<body>
+    <div class="page-wrapper">
+        <header class="header">
+            <img src="dictionary.png" width="64" alt="">
+            <div class="accordion">
+                <h1>
+                    <button class="accordion__button" data-accordion-button>
+                        Dictionary: add entry
+                    </button>
+                </h1>
+                <div class="accordion__content open" data-accordion-content>
+                    <form id="entries-form" data-accordion-heading>
+                        <div>
+                            <label for="term" class="term"><span>Word / phrase <span
+                                        class="info warning">(Required)</span></span>
+                                <span class="info">Allowed input: a-z / A-Z / . / , / space. No numbers,
+                                    accents or special characters</span></label>
+                            <input type="text" id="term" pattern="^[a-zA-Z,.\s]+"
+                                title="Allowed input: a-z / A-Z / . / , / space. No numbers, accents or special characters"
+                                data-input-term>
+                            <span class="warning info" data-input-warning></span>
+                        </div>
+                        <div>
+                            <label for="definition">Definition</label>
+                            <textarea id="definition" data-input-def rows="5" cols="50"></textarea>
+                        </div>
+                        <div class="button-group">
+                            <button>Submit</button>
+                            <button data-cancel-button type="button">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </header>
+        <main class="main">
+
+            <div role="region" aria-labelledby="sortableDictionary" tabindex="0" class="table-container">
+                <table id="sort-table">
+                    <caption class="sr-only" id="sortableDictionary">
+                        Sortable dictionary
+                    </caption>
+                    <thead id="table-head" class="sticky">
+                        <tr id="table-headers">
+                            <th>
+                                <div class="word-phrase">
+                                    <span> Word/Phrase</span>
+                                    <button data-sort-term data-sort-btn disabled class="btn-sort">
+                                        Sort a-z
+                                    </button>
+                                </div>
+                            </th>
+                            <th>
+                                <div class="definition"><span> Definition</span></div>
+                            </th>
+                            <th>
+                                <div>
+                                    <span class="sr-only">Delete entry</span>
+                                    <svg class="icon-delete" viewBox="0 0 128 128" aria-hidden="true">
+                                        <g transform="matrix(1.58 0 0 1.58 64 64)">
+                                            <g>
+                                                <g transform="matrix(1 0 0 1 0 0)">
+                                                    <path class="path-circle" transform=" translate(-40, -40)"
+                                                        d="M 40 0 C 17.9 0 0 17.9 0 40 C 0 62.1 17.9 80 40 80 C 62.1 80 80 62.1 80 40 C 80 17.9 62.1 0 40 0 z" />
+                                                </g>
+                                                <g transform="matrix(1 0 0 1 0 -0.04)">
+                                                    <path class="path-x" transform=" translate(-40, -39.96)" d="M 59.2 28.2 L 47.4 40 L 59.2 51.8 C 61.300000000000004
+            53.9 61.300000000000004 57.199999999999996 59.2 59.199999999999996 C
+            58.2 60.199999999999996 56.800000000000004 60.699999999999996 55.5
+            60.699999999999996 C 54.199999999999996 60.699999999999996 52.8
+            60.199999999999996 51.8 59.199999999999996 L 40 47.4 L 28.2 59.2 C
+            27.2 60.2 25.8 60.7 24.5 60.7 C 23.2 60.7 21.8 60.2 20.8 59.2 C 18.7
+            57.1 18.7 53.800000000000004 20.8 51.800000000000004 L 32.6 40 L
+            20.8 28.2 C 18.7 26.099999999999998 18.7 22.799999999999997 20.8
+            20.799999999999997 C 22.900000000000002 18.799999999999997
+            26.200000000000003 18.699999999999996 28.200000000000003
+            20.799999999999997 L 40 32.6 L 51.8 20.8 C 53.9 18.7
+            57.199999999999996 18.7 59.199999999999996 20.8 C 61.199999999999996
+            22.900000000000002 61.3 26.2 59.2 28.2 z" />
+                                                </g>
+                                            </g>
+                                        </g>
+                                    </svg>
+                                </div>
+                            </th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </main>
+        <footer class="footer">
+            <a href="https://github.com/chrisnajman/sortable-dictionary" target="_blank"
+                rel="noopener noreferrer">GitHub
+                Repository</a>
+        </footer>
+    </div>
+    <template id="table-row">
+        <tr class="table-row">
+            <td>
+                <div data-term></div>
+            </td>
+            <td>
+                <div>
+                    <p data-def></p>
+                    <button data-edit-row class="btn-edit">Edit</button>
+                </div>
+            </td>
+            <td>
+                <div><button data-delete-row class="btn-delete">Delete</button></div>
+            </td>
+        </tr>
+    </template>
+
+
+</body>
+
+</html>

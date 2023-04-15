@@ -1,0 +1,404 @@
+*,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+html {
+    overflow-y: scroll;
+}
+
+:root {
+    --light: rgb(255, 255, 255);
+    --bg-light: rgb(245, 245, 250);
+    --bg-dark: rgb(9, 9, 70);
+    --button: rgb(229, 229, 236);
+    --font-sans: sans-serif;
+    --font-serif: Georgia, serif;
+    --horz-center: 0 auto;
+    --flex: flex;
+}
+
+body {
+    background-color: var(--bg-light);
+    color: var(--bg-dark);
+    font-family: var(--font-sans);
+    margin: 0;
+    line-height: 1.5;
+    font-size: 1rem;
+}
+
+h1 {
+    text-align: center;
+    max-width: 30rem;
+    margin: var(--horz-center);
+    font-size: 1.2rem;
+}
+@media screen and (min-width: 440px) {
+    h1 {
+        font-size: 2rem;
+    }
+}
+
+header,
+footer {
+    background-color: var(--bg-dark);
+    color: var(--light);
+}
+
+footer {
+    padding: 2rem 1rem;
+}
+main {
+    padding: 3rem 1rem;
+}
+
+header {
+    display: var(--flex);
+    flex-direction: column;
+    padding: 1rem 1rem 2rem 1rem;
+}
+
+header img {
+    width: 2rem;
+    height: auto;
+    margin: var(--horz-center);
+    margin-bottom: 1rem;
+}
+
+footer {
+    text-align: center;
+}
+footer a {
+    color: var(--light);
+}
+
+button {
+    cursor: pointer;
+    font-family: var(--font-sans);
+}
+
+button:not(.accordion__button) {
+    background-color: var(--light);
+    border: 1px solid var(--bg-dark);
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.125rem;
+}
+button:not(.accordion__button):hover {
+    background-color: var(--button);
+}
+
+button:not(.accordion__button)[disabled] {
+    border: 1px solid var(--button);
+    cursor: default;
+    opacity: 0.9;
+}
+
+button:not(.accordion__button)[disabled]:hover {
+    background-color: var(--light);
+}
+
+button,
+input,
+textarea {
+    font-size: inherit;
+}
+
+input,
+textarea,
+td {
+    font-family: var(--font-serif);
+}
+
+textarea {
+    width: 100%;
+}
+
+/** Page layout (flex) **/
+.page-wrapper {
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: var(--flex);
+    flex-direction: column;
+    align-items: stretch;
+}
+
+header,
+main,
+footer {
+    flex-shrink: 0;
+}
+
+main {
+    flex-grow: 1;
+}
+
+/** Accordion **/
+.accordion h2 {
+    margin-top: 0;
+}
+
+.accordion__button {
+    position: relative;
+    display: block;
+    margin: 0;
+    padding: 0.5rem 1rem;
+    width: 100%;
+    color: var(--bg-dark);
+    font-size: inherit;
+    background-color: var(--light);
+    border-radius: 2rem;
+}
+
+.accordion__button:focus,
+.accordion__button:hover,
+.accordion__button[aria-expanded="false"]:hover {
+    background-color: var(--button);
+}
+
+.accordion__button::after {
+    content: "\002B";
+    position: absolute;
+    right: 1.7rem;
+    top: 0;
+    width: 0;
+    height: 0;
+    font-size: 2.2rem;
+}
+
+@media screen and (min-width: 440px) {
+    .accordion__button::after {
+        right: 3rem;
+        font-size: 3rem;
+    }
+}
+
+.accordion__button.expanded {
+    background-color: var(--button);
+    color: var(--bg-dark);
+}
+
+.accordion__button.expanded::after {
+    content: "\2212";
+}
+.accordion__button[aria-expanded="false"] {
+    background-color: var(--light);
+    color: var(--bg-dark);
+}
+
+.accordion__content {
+    max-height: 0vh;
+    overflow: hidden;
+}
+
+.accordion__content.open {
+    max-height: 100vh;
+    overflow: auto;
+    overflow: visible;
+    padding-top: 2rem;
+    visibility: visible;
+}
+
+/** Form **/
+form {
+    background-color: var(--light);
+    border: 1px solid;
+    display: var(--flex);
+    flex-direction: column;
+    padding: 1rem;
+    margin: var(--horz-center);
+    max-width: 50rem; /* 1200px */
+    color: var(--bg-dark);
+    border-radius: 0.5rem;
+}
+
+form > div {
+    padding: 1rem 0;
+    display: var(--flex);
+    flex-direction: column;
+}
+
+.term {
+    display: var(--flex);
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+form .button-group {
+    display: var(--flex);
+    flex-direction: row;
+    gap: 0.5rem;
+    margin-left: auto;
+    margin-right: 0;
+}
+
+form .button-group button {
+    align-self: flex-start;
+    margin-left: 0;
+}
+
+form input,
+form textarea {
+    padding: 0.5rem;
+}
+
+label {
+    font-weight: 600;
+    padding-bottom: 0.5rem;
+}
+
+textarea {
+    resize: none;
+}
+
+.info {
+    font-size: 0.75rem;
+    font-weight: normal;
+}
+
+.warning {
+    color: red;
+    padding-top: 0.25rem;
+}
+
+/** Table **/
+.table-container {
+    max-height: 37.5rem; /* 600px */
+    overflow: auto;
+    padding: 0 0.25rem;
+}
+
+/* Used on sort-table #table-headers */
+.sticky {
+    z-index: 1;
+    position: sticky;
+    top: 0;
+}
+
+.btn-edit {
+    margin-left: auto;
+}
+
+.btn-delete {
+    margin: auto;
+}
+
+td p {
+    max-width: 29ch;
+}
+
+td p[data-def][contenteditable] {
+    background-color: var(--light);
+    border: 1px dotted var(--bg-dark);
+    padding: 0.25rem;
+    cursor: default;
+    width: 100%;
+}
+
+[data-def][contenteditable]:focus {
+    background-color: var(--bg-dark);
+    color: var(--light);
+}
+
+table {
+    border-spacing: 0;
+    border-collapse: collapse;
+    border: 0;
+    margin: var(--horz-center);
+    max-width: 75rem;
+}
+
+table caption {
+    font-weight: 600;
+    font-size: 1.25rem;
+    padding: 1rem;
+}
+
+table button {
+    flex-shrink: 0;
+    cursor: pointer;
+}
+
+th,
+td {
+    text-align: left;
+    width: 33.3333%;
+}
+
+th,
+td:not(:last-child) {
+    vertical-align: top;
+}
+
+th > *,
+td > * {
+    display: var(--flex);
+    flex-wrap: wrap;
+    align-items: start;
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.word-phrase {
+    flex-direction: column;
+}
+
+.word-phrase > * {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media screen and (min-width: 690px) {
+    .word-phrase {
+        flex-direction: row;
+    }
+}
+
+th .definition {
+    justify-content: center;
+}
+
+th,
+td {
+    border-right: 1px solid var(--bg-light);
+}
+
+th:last-child,
+td:last-child {
+    border-right: 0;
+}
+
+tr:nth-child(odd) {
+    background-color: var(--light);
+}
+
+thead tr:nth-child(odd) {
+    background-color: var(--bg-dark);
+    color: var(--light);
+}
+
+/** style svg **/
+.icon-delete {
+    width: 1.5rem;
+    margin: auto;
+}
+
+.path-circle {
+    fill: var(--light);
+}
+
+.path-x {
+    fill: var(--bg-dark);
+}
+
+/* screenreader only */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip-path: inset(0);
+    border: 0;
+}
