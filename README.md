@@ -30,7 +30,7 @@ The 'results' table has a 'sticky' thead, so the table headers (`th`s) will alwa
 
 ## Javascript
 
-- Accessibile accordion
+- Accessible accordion
 - Sort functionality (lifted from [www.w3schools.com)](https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_sort_table_desc) then modified)
 - ES6 (no transpilation to ES5)
 - Data is saved to local storage
