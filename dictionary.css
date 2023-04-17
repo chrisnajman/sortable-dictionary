@@ -189,6 +189,7 @@ main {
 .accordion__content {
     max-height: 0vh;
     overflow: hidden;
+    transition: max-height 0.1s;
 }
 
 .accordion__content.open {
