@@ -189,7 +189,6 @@ main {
 .accordion__content {
     max-height: 0vh;
     overflow: hidden;
-    transition: max-height 0.1s;
 }
 
 .accordion__content.open {
@@ -264,7 +263,6 @@ textarea {
 
 /** Table **/
 .table-container {
-    /* max-height: 37.5rem; 600px */
     overflow: auto;
     padding: 0 0.25rem;
 }
@@ -319,8 +317,10 @@ td {
     width: 33.3333%;
 }
 
-th,
-td:not(:last-child) {
+th {
+    vertical-align: middle;
+}
+td {
     vertical-align: top;
 }
 
@@ -328,9 +328,16 @@ th > *,
 td > * {
     display: var(--flex);
     flex-wrap: wrap;
-    align-items: start;
     gap: 1rem;
     padding: 1rem;
+}
+
+th > * {
+    align-items: center;
+}
+
+td > * {
+    align-items: start;
 }
 
 .word-phrase {
